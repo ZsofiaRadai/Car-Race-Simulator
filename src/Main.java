@@ -62,9 +62,28 @@ public class Main {
         }
         return isRaining;
     }
+
+    static void simulateRace(){
+        for (Car i: cars){
+            for (int round = 0; round < 50; round++){
+                boolean isRaining = decideIfIsRaining();
+                i.setSpeedLimit(isRaining);
+                i.moveForAnHour();
+            }
+        }
+    }
+
+    static void printRaceResults(){
+        for (Car i: cars){
+            i.printCarDetails();
+        }
+    }
     public static void main (String[] args){
         decideIfIsRaining();
         createCars();
         createMotors();
+        createTrucks();
+        simulateRace();
+        printRaceResults();
     }
 }

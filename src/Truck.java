@@ -10,7 +10,7 @@ public class Truck {
     }
 
     public void moveForAnHour(){
-        distanceTraveled++;
+        distanceTraveled += speed;
     }
 
     public void printTruckDetails(){

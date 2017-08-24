@@ -13,7 +13,7 @@ public class Motorcycle {
     }
 
     public void moveForAnHour(){
-        distanceTraveled++;
+        distanceTraveled += speed;
     }
 
     public void printMotorDetails(){

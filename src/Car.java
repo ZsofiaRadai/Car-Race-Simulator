@@ -9,18 +9,20 @@ public class Car {
         name = fantasyName;
     }
 
-    public void setSpeedLimit(int limit){
-        speedLimit = limit;
+    public void setSpeedLimit(boolean IsRaining){
+        boolean isRaining = false;
+        if (isRaining){
+            normalSpeed = 70;
+        }
     }
 
     public void moveForAnHour(){
-        distanceTraveled++;
+
+        distanceTraveled += normalSpeed;
     }
 
     public void printCarDetails(){
-        System.out.println(name);
-        System.out.println(normalSpeed);
-        System.out.println(distanceTraveled);
+        System.out.println(name + " " + distanceTraveled);
     }
 
 }
