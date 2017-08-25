@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Motorcycle {
-    int speed = 100;
+    int speed = 90;
     int distanceTraveled;
     int nameNumber;
     String name;
@@ -16,9 +16,9 @@ public class Motorcycle {
         if (isRaining){
             Random rand = new Random();
             int slower = rand.nextInt(45) + 5;
-            speed = 100 - slower;
+            speed = 90 - slower;
         } else {
-            speed = 100;
+            speed = 90;
         }
         distanceTraveled += speed;
     }

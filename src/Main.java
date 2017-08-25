@@ -6,6 +6,7 @@ public class Main {
             "Adventure", "Blaze", "Renegade", "Titan", "Empire", "Phenomenon", "QueenElizabethII"};
     static ArrayList<String> fantasyNames = new ArrayList<String>();
     static Object[] vehicles = new Object[31];
+    static HashMap<String, Integer> vehicleDistances= new HashMap();
     static Random rand = new Random();
 
     static void createVehicles(){
@@ -75,17 +76,38 @@ public class Main {
         for (Object o : vehicles) {
             if (o instanceof Car) {
                 ((Car) o).printCarDetails();
+                vehicleDistances.put(((Car) o).name, ((Car) o).distanceTraveled);
             }else if (o instanceof Motorcycle){
                 ((Motorcycle) o).printMotorDetails();
+                vehicleDistances.put(((Motorcycle) o).name, ((Motorcycle) o).distanceTraveled);
             }else if (o instanceof Truck){
                 ((Truck) o).printTruckDetails();
+                String truckName = Integer.toString(((Truck) o).name);
+                vehicleDistances.put(truckName, ((Truck) o).distanceTraveled);
             }
         }
     }
+
+    static void whoIsWinner() {
+        int longestDistance = 0;
+        for (Integer value : vehicleDistances.values()) {
+            if (value > longestDistance) {
+                longestDistance = value;
+            }
+        }
+        for (String name : vehicleDistances.keySet()) {
+            if (vehicleDistances.get(name).equals(longestDistance)) {
+                System.out.println();
+                System.out.println("The winner is: " + name + ", driven: " + longestDistance + "km");
+            }
+        }
+    }
+
     public static void main (String[] args){
         decideIfIsRaining();
         createVehicles();
         simulateRace();
         printRaceResults();
+        whoIsWinner();
     }
 }
