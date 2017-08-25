@@ -5,9 +5,9 @@ public class Main {
     static String[] fantasyCarNames = {"Catalyst" , "Nimbus", "Vagabond", "Aeon", "Centaur",
             "Adventure", "Blaze", "Renegade", "Titan", "Empire", "Phenomenon", "QueenElisabethII"};
     static ArrayList<String> fantasyNames = new ArrayList<String>();
-    static List<Car> cars = new ArrayList<Car>();
     static List<Motorcycle> motors = new ArrayList<Motorcycle>();
     static List<Truck> trucks = new ArrayList<Truck>();
+    static Object[] vehicles = new Object[30];
     static Random rand = new Random();
 
     static void createCars(){
@@ -25,7 +25,7 @@ public class Main {
             int idx = new Random().nextInt(fantasyNames.size());
             String fantasyName = (fantasyNames.get(i));
 
-            cars.add(new Car(speed, fantasyName));
+            vehicles[i] = new Car(speed, fantasyName);
         }
     }
 
@@ -64,19 +64,22 @@ public class Main {
     }
 
     static void simulateRace(){
-        for (Car i: cars){
+        for (Object o: vehicles){
             for (int round = 0; round < 50; round++){
                 boolean isRaining = decideIfIsRaining();
-                i.setSpeedLimit(isRaining);
-                i.moveForAnHour();
-                i.printSpeed();
+                if (o instanceof Car){
+                    ((Car) o).setSpeedLimit(isRaining);
+                    ((Car) o).moveForAnHour();
+                }
             }
         }
     }
 
     static void printRaceResults(){
-        for (Car i: cars){
-            i.printCarDetails();
+        for (Object o: vehicles){
+            if (o instanceof Car){
+                ((Car) o).printCarDetails();
+            }
         }
     }
     public static void main (String[] args){
