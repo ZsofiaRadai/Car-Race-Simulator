@@ -21,16 +21,11 @@ public class Car {
     }
 
     public void moveForAnHour(){
-
         distanceTraveled += normalSpeed;
     }
 
     public void printCarDetails(){
-        System.out.println(name + " " + distanceTraveled);
-    }
-
-    public void printSpeed(){
-        System.out.println(normalSpeed);
+        System.out.println(name + " " + distanceTraveled + "km");
     }
 
 }
