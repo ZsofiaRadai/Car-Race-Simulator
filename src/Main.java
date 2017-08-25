@@ -83,6 +83,12 @@ public class Main {
                 m.moveForAnHour(isRaining);
             }
         }
+
+        for (Truck t: trucks){
+            for (int r = 0; r < 50; r++) {
+                t.moveForAnHour();
+            }
+        }
     }
 
     static void printRaceResults(){
@@ -91,6 +97,10 @@ public class Main {
         }
         for (Motorcycle m: motors){
             m.printMotorDetails();
+        }
+
+        for (Truck t: trucks){
+            t.printTruckDetails();
         }
     }
     public static void main (String[] args){
