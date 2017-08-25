@@ -1,5 +1,5 @@
 public class Truck {
-    int speed = 100;
+    int speed = 90;
     int name;
     int distanceTraveled;
     //breakdownTurnsLeft??
@@ -10,13 +10,17 @@ public class Truck {
     }
 
     public void moveForAnHour(){
+        double chance = Math.random();
+        if (chance < 0.05) {
+            speed = 0;
+        } else {
+            speed = 90;
+        }
         distanceTraveled += speed;
     }
 
     public void printTruckDetails(){
-        System.out.println(name);
-        System.out.println(speed);
-        //System.out.println(distanceTraveled);
+        System.out.println(name + " " + distanceTraveled + "km");
     }
 
 }

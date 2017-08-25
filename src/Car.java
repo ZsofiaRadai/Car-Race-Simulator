@@ -26,7 +26,7 @@ public class Car {
     }
 
     public void printCarDetails(){
-        System.out.println(name + " " + distanceTraveled);
+        System.out.println(name + " " + distanceTraveled + "km");
     }
 
     public void printSpeed(){

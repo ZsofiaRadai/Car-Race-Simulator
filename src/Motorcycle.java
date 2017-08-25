@@ -24,6 +24,6 @@ public class Motorcycle {
     }
 
     public void printMotorDetails(){
-        System.out.println(name + " " + distanceTraveled);
+        System.out.println(name + " " + distanceTraveled + "km");
     }
 }
