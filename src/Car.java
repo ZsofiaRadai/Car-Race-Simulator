@@ -1,8 +1,11 @@
+import java.util.Random;
+
 public class Car {
     int normalSpeed;
     String name;
     int distanceTraveled;
     int speedLimit;
+    static Random rand = new Random();
 
     public Car(int speed, String fantasyName){
         normalSpeed = speed;
@@ -12,6 +15,8 @@ public class Car {
     public void setSpeedLimit(boolean isRaining){
         if (isRaining){
             normalSpeed = 70;
+        } else {
+            normalSpeed = rand.nextInt(30) + 80;
         }
     }
 
