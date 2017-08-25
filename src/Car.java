@@ -29,4 +29,8 @@ public class Car {
         System.out.println(name + " " + distanceTraveled);
     }
 
+    public void printSpeed(){
+        System.out.println(normalSpeed);
+    }
+
 }

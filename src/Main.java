@@ -13,8 +13,11 @@ public class Main {
     static void createCars(){
         fantasyNames.addAll(Arrays.asList(fantasyCarNames));
         Collections.shuffle(fantasyNames);
+        int motorSpeed = 100;
+        int motorIndex = 10;
         for (int i = 0; i < 10; i++){
             int  speed;
+            motorIndex++;
             double chance = Math.random();
             if (chance < 0.3){
                 speed = 70;
@@ -22,14 +25,21 @@ public class Main {
                 speed = rand.nextInt(30) + 80;
             }
 
+            if (isRaining){
+                Random rand = new Random();
+                int slower = rand.nextInt(45) + 5;
+                motorSpeed -= slower;
+            }
+
             int idx = new Random().nextInt(fantasyNames.size());
             String fantasyName = (fantasyNames.get(i));
 
             vehicles[i] = new Car(speed, fantasyName);
+            vehicles[motorIndex] = new Motorcycle(i+1, motorSpeed);
         }
     }
 
-    public static void createMotors(){
+    /*public static void createMotors(){
         int motorSpeed = 100;
         for (int i = 1; i <= 10; i++){
             if (isRaining){
@@ -39,7 +49,7 @@ public class Main {
             }
             motors.add(new Motorcycle(i, motorSpeed));
         }
-    }
+    }*/
 
     public static void createTrucks() {
         int truckSpeed = 100;
@@ -70,22 +80,26 @@ public class Main {
                 if (o instanceof Car){
                     ((Car) o).setSpeedLimit(isRaining);
                     ((Car) o).moveForAnHour();
+                }else if (o instanceof Motorcycle){
+                    ((Motorcycle) o).moveForAnHour(isRaining);
                 }
             }
         }
     }
 
-    static void printRaceResults(){
-        for (Object o: vehicles){
-            if (o instanceof Car){
+    static void printRaceResults() {
+        for (Object o : vehicles) {
+            if (o instanceof Car) {
                 ((Car) o).printCarDetails();
+            }else if (o instanceof Motorcycle){
+                ((Motorcycle) o).printMotorDetails();
             }
         }
     }
     public static void main (String[] args){
         decideIfIsRaining();
         createCars();
-        createMotors();
+        //createMotors();
         createTrucks();
         simulateRace();
         printRaceResults();
