@@ -69,6 +69,7 @@ public class Main {
                 boolean isRaining = decideIfIsRaining();
                 i.setSpeedLimit(isRaining);
                 i.moveForAnHour();
+                i.printSpeed();
             }
         }
     }
