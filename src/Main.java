@@ -10,7 +10,7 @@ public class Main {
     static List<Truck> trucks = new ArrayList<Truck>();
     static Random rand = new Random();
 
-    static void createCars(){
+    public static void createCars(){
         fantasyNames.addAll(Arrays.asList(fantasyCarNames));
         Collections.shuffle(fantasyNames);
         for (int i = 0; i < 10; i++){
@@ -53,6 +53,12 @@ public class Main {
         }
     }
 
+    public static void createVehicles(){
+        createCars();
+        createMotors();
+        createTrucks();
+    }
+
     static boolean decideIfIsRaining() {
         double chance = Math.random();
         if (chance < 0.3) {
@@ -64,25 +70,32 @@ public class Main {
     }
 
     static void simulateRace(){
-        for (Car i: cars){
-            for (int round = 0; round < 50; round++){
-                boolean isRaining = decideIfIsRaining();
-                i.setSpeedLimit(isRaining);
-                i.moveForAnHour();
+        for (Car c: cars) {
+            for (int round = 0; round < 50; round++) {
+                isRaining = decideIfIsRaining();
+                c.setSpeedLimit(isRaining);
+                c.moveForAnHour();
+            }
+        }
+
+        for (Motorcycle m : motors) {
+            for (int r = 0; r < 50; r++) {
+                m.moveForAnHour(isRaining);
             }
         }
     }
 
     static void printRaceResults(){
-        for (Car i: cars){
-            i.printCarDetails();
+        for (Car c: cars){
+            c.printCarDetails();
+        }
+        for (Motorcycle m: motors){
+            m.printMotorDetails();
         }
     }
     public static void main (String[] args){
         decideIfIsRaining();
-        createCars();
-        createMotors();
-        createTrucks();
+        createVehicles();
         simulateRace();
         printRaceResults();
     }

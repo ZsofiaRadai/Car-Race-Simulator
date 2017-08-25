@@ -12,14 +12,18 @@ public class Motorcycle {
         speed = motorSpeed;
     }
 
-    public void moveForAnHour(){
-        distanceTraveled += speed;
+    public void moveForAnHour(boolean isRaining) {
+        if (isRaining) {
+            Random rand = new Random();
+            int slower = rand.nextInt(45) + 5;
+            distanceTraveled += 100 - slower;
+        } else {
+            speed = 100;
+            distanceTraveled += speed;
+        }
     }
 
     public void printMotorDetails(){
-        System.out.println(nameNumber);
-        System.out.println(name);
-        System.out.println(speed);
-        System.out.println(distanceTraveled);
+        System.out.println(name + " " + distanceTraveled);
     }
 }

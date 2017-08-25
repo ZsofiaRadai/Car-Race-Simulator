@@ -16,7 +16,7 @@ public class Truck {
     public void printTruckDetails(){
         System.out.println(name);
         System.out.println(speed);
-        //System.out.println(distanceTraveled);
+        System.out.println(distanceTraveled);
     }
 
 }

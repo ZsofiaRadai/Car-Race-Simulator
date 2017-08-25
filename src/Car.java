@@ -9,8 +9,7 @@ public class Car {
         name = fantasyName;
     }
 
-    public void setSpeedLimit(boolean IsRaining){
-        boolean isRaining = false;
+    public void setSpeedLimit(boolean isRaining){
         if (isRaining){
             normalSpeed = 70;
         }
