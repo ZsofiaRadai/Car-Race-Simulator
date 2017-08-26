@@ -6,10 +6,14 @@ public class Motorcycle {
     int nameNumber;
     String name;
 
-    public Motorcycle(int number, int motorSpeed){
+    public Motorcycle(int number, boolean isRaining){
         nameNumber = number;
         name = "Motorcycle " + number;
-        speed = motorSpeed;
+        if (isRaining){
+            Random rand = new Random();
+            int slower = rand.nextInt(45) + 5;
+            speed -= slower;
+        }
     }
 
     public void moveForAnHour(boolean isRaining){

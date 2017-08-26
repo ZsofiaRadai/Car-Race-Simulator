@@ -1,12 +1,22 @@
+import java.util.Random;
+
 public class Truck {
     int speed = 90;
     int name;
     int distanceTraveled;
     //breakdownTurnsLeft??
+    static Random rand = new Random();
 
-    public Truck(int name, int truckSpeed){
+    public Truck(){
         this.name = name;
-        speed = truckSpeed;
+        double chance = Math.random();
+        if (chance < 0.05) {
+            speed = 0;
+        } else {
+            speed = 90;
+        }
+        int truckName = rand.nextInt(1000) + 0;
+        name = truckName;
     }
 
     public void moveForAnHour(){
