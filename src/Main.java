@@ -11,7 +11,6 @@ public class Main {
 
     static void createVehicles(){
         fantasyNames.addAll(Arrays.asList(fantasyCarNames));
-        Collections.shuffle(fantasyNames);
 
         int carSpeed;
         int motorSpeed = 100;
@@ -38,7 +37,12 @@ public class Main {
             }
 
             int truckName = rand.nextInt(1000) + 0;
-            String fantasyName = (fantasyNames.get(i));
+            Collections.shuffle(fantasyNames);
+            String fantasyName1 = (fantasyNames.get(i));
+            Collections.shuffle(fantasyNames);
+            String fantasyName2 = (fantasyNames.get(i));
+            String fantasyName = fantasyName1 + " " + fantasyName2;
+
 
             vehicles[i] = new Car(carSpeed, fantasyName);
             vehicles[motorIndex] = new Motorcycle(i+1, motorSpeed);
